@@ -2,7 +2,34 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setUser }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+
+      const user = {
+        email: email,
+        password: password,
+      };
+
+      const response = await axios.post("http://localhost:5000/login", user);
+
+      if (response.data.token) {
+        console.log(response.data.token);
+        setUser(response.data.token);
+        navigate("/message");
+      } else {
+        console.log(response);
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <form className="container">
