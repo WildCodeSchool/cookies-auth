@@ -17,7 +17,7 @@ const Login = ({ setUser }) => {
         password: password,
       };
 
-      const response = await axios.post("http://localhost:5000/login", user);
+      const response = await axios.post("http://localhost:4000/login", user);
 
       if (response.data.token) {
         console.log(response.data.token);

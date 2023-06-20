@@ -21,7 +21,7 @@ const Signin = () => {
         password: password,
       };
 
-      const response = await axios.post("http://localhost:5000/users", user);
+      const response = await axios.post("http://localhost:4000/users", user);
 
       if (response.status === 201) {
         console.log(response.data);
