@@ -11,28 +11,14 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 
 function App() {
-  const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
-
-  const setUser = (token) => {
-    if (token) {
-      Cookies.set("userToken", token, {
-        expires: 1 / 24,
-      });
-      setUserToken(token);
-    } else {
-      Cookies.remove("userToken");
-      setUserToken(null);
-    }
-  };
-
   return (
     <Router>
-      <Header userToken={userToken} setUser={setUser} />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/message" element={<Message userToken={userToken} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/message" element={<Message />} />
       </Routes>
     </Router>
   );

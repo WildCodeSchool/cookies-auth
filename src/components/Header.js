@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = ({ userToken, setUser }) => {
-  const navigate = useNavigate();
+const Header = () => {
 
   return (
     <header>
@@ -10,20 +9,9 @@ const Header = ({ userToken, setUser }) => {
           Authentification avec les cookies
         </Link>
       </h1>
-      {userToken ? (
-        <button
-          onClick={() => {
-            setUser(null);
-            navigate("/");
-          }}
-        >
-          Se déconnecter
-        </button>
-      ) : (
         <button>
           <Link to={"/login"}>Se connecter</Link>
         </button>
-      )}
     </header>
   );
 };
