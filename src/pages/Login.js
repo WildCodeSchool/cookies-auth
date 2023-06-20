@@ -17,7 +17,7 @@ const Login = ({ setUser }) => {
         password: password,
       };
 
-      const response = await axios.post("http://localhost:5000/login", user);
+      const response = await axios.post("http://localhost:4000/login", user);
 
       if (response.data.token) {
         console.log(response.data.token);
@@ -32,14 +32,20 @@ const Login = ({ setUser }) => {
   };
 
   return (
-    <form className="container">
+    <form onSubmit={handleSubmit} className="container">
       <input
         type="email"
         placeholder="Entrez votre email ici"
+        onChange={(event) => {
+          setEmail(event.target.value);
+        }}
       />
       <input
         type="password"
         placeholder="Entrez votre mot de passe ici"
+        onChange={(event) => {
+          setPassword(event.target.value);
+        }}
       />
       <button type="submit">Envoyer</button>
       <Link to={"/signin"} className="link">

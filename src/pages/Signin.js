@@ -21,7 +21,7 @@ const Signin = () => {
         password: password,
       };
 
-      const response = await axios.post("http://localhost:5000/users", user);
+      const response = await axios.post("http://localhost:4000/users", user);
 
       if (response.status === 201) {
         console.log(response.data);
@@ -33,22 +33,34 @@ const Signin = () => {
   };
 
   return (
-    <form className="container">
+    <form onSubmit={handleSubmit} className="container">
       <input
         type="text"
         placeholder="Entrez votre prénom ici"
+        onChange={(event) => {
+          setFirstname(event.target.value);
+        }}
       />
       <input
         type="text"
         placeholder="Entrez votre nom ici"
+        onChange={(event) => {
+          setLastname(event.target.value);
+        }}
       />
       <input
         type="email"
         placeholder="Entrez votre email ici"
+        onChange={(event) => {
+          setEmail(event.target.value);
+        }}
       />
       <input
         type="password"
         placeholder="Entrez votre mot de passe ici"
+        onChange={(event) => {
+          setPassword(event.target.value);
+        }}
       />
       <button type="submit">Envoyer</button>
       <Link to={"/login"} className="link">
