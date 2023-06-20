@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import getRandomInt from "../services/utils"
+import getRandomNum from "../services/utils"
 import axios from "axios";
 
 const Message = ({ userToken }) => {
@@ -42,7 +42,7 @@ const Message = ({ userToken }) => {
     <p>En cours de chargement</p>
   ) : (
     <div className="container">
-      <h1>{message[getRandomInt(1, (message.length))]}</h1>
+      <h1>{message[getRandomNum(1, (message.length))]}</h1>
       <Link to="/" className="link">
         Retourner à l'accueil
       </Link>
